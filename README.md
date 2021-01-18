@@ -67,7 +67,7 @@ Supported [Python escape sequences](https://docs.python.org/3/reference/lexical_
   * This requires [UnicodeInformation](https://www.nuget.org/packages/UnicodeInformation/)
 
 Supported quote types:
-* "String"
-* 'String'
-* """String"""
-* '''String'''
+* `"String"`
+* `'String'`
+* `"""String"""`
+* `'''String'''`
