@@ -1,0 +1,9 @@
+# Ignore these folders
+.vs/
+packages/
+obj/
+bin/
+
+# Ignore these files
+*.user
+.DS_Store
