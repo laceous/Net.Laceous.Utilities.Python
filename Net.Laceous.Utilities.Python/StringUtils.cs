@@ -234,7 +234,12 @@ namespace Net.Laceous.Utilities.Python
                                 UnrecognizedEscapeOrAppend(sb, unescapeOptions.IsUnrecognizedEscapeVerbatim, nameof(s), new char[] { s[i] });
                                 break;
                             case StringQuoteKind.TripleDoubleQuote:
-                                if (i + 2 < s.Length && s[i + 1].IsDoubleQuote() && s[i + 2].IsDoubleQuote())
+                                if (i + 1 == s.Length)
+                                {
+                                    // can't have unescaped " as the last char in the string
+                                    UnrecognizedEscapeOrAppend(sb, unescapeOptions.IsUnrecognizedEscapeVerbatim, nameof(s), new char[] { s[i] });
+                                }
+                                else if (i + 2 < s.Length && s[i + 1].IsDoubleQuote() && s[i + 2].IsDoubleQuote())
                                 {
                                     // can't have unescaped triple quotes within triple quotes
                                     UnrecognizedEscapeOrAppend(sb, unescapeOptions.IsUnrecognizedEscapeVerbatim, nameof(s), new char[] { s[i] });
@@ -261,7 +266,12 @@ namespace Net.Laceous.Utilities.Python
                                 UnrecognizedEscapeOrAppend(sb, unescapeOptions.IsUnrecognizedEscapeVerbatim, nameof(s), new char[] { s[i] });
                                 break;
                             case StringQuoteKind.TripleSingleQuote:
-                                if (i + 2 < s.Length && s[i + 1].IsSingleQuote() && s[i + 2].IsSingleQuote())
+                                if (i + 1 == s.Length)
+                                {
+                                    // can't have unescaped ' as the last char in the string
+                                    UnrecognizedEscapeOrAppend(sb, unescapeOptions.IsUnrecognizedEscapeVerbatim, nameof(s), new char[] { s[i] });
+                                }
+                                else if (i + 2 < s.Length && s[i + 1].IsSingleQuote() && s[i + 2].IsSingleQuote())
                                 {
                                     // can't have unescaped triple quotes within triple quotes
                                     UnrecognizedEscapeOrAppend(sb, unescapeOptions.IsUnrecognizedEscapeVerbatim, nameof(s), new char[] { s[i] });
